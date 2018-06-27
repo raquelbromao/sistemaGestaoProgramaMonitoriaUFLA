@@ -1,0 +1,43 @@
+<!-- views/relatorios/listagemDeMonitores.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <% include partials/head %>
+</head>
+<body>
+  <header>
+    <% include partials/navebar %>
+  </header>
+
+   <main>
+     <div class="container relatorio">
+
+      <div class="jumbotron listagemMonitores">
+        <p> Monitores</p>
+        <table>
+          <thead>
+            <tr>
+              <th>NOME</th>
+              <th>MATRICULA</th>
+              <th>E-MAIL</th>
+            </tr>
+           <% monitores.forEach(function(monitor) { %> 
+            <tr>
+              <th><%= monitor.nome %></th>
+              <th><%= monitor.matricula %></th>
+              <th><%= monitor.login %></th>  
+            </tr>
+            <% }) %>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>  
+      </div>
+
+     </div>
+   </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

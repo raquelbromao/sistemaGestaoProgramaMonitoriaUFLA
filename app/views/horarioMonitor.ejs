@@ -1,0 +1,86 @@
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include partials/head %>
+</head>
+
+<body>
+    <header>
+        <% include partials/navebar %>
+            <style>
+                table {
+                    font-family: arial, sans-serif;
+                    border-collapse: collapse;
+                    width: 100%;
+                    text-align: center;
+                }
+
+                td,
+                th {
+                    border: 1px solid #dddddd;
+                    text-align: left;
+                    padding: 8px;
+                }
+
+                tr:nth-child(even) {
+                    background-color: #dddddd;
+                }
+
+                a.fla {
+                    margin-right: 10px;
+                }
+            </style>
+    </header>
+
+    <main>
+        <div class="container horarioAtendimento">
+
+            <div class="jumbotron horario">
+                <p>Horário de Atendimento:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SEGUNDA</th>
+                            <th>TERÇA</th>
+                            <th>QUARTA</th>
+                            <th>QUINTA</th>
+                            <th>SEXTA</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <%= horarioMonitor.segunda %>
+                            </th>
+                            <th>
+                                <%= horarioMonitor.terca %>
+                            </th>
+                            <th>
+                                <%= horarioMonitor.quarta %>
+                            </th>
+                            <th>
+                                <%= horarioMonitor.quinta %>
+                            </th>
+                            <th>
+                                <%= horarioMonitor.sexta %>
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+                <br>
+                <div style="margin: auto">
+                    <a class="btn btn-warning col-md-3 fla" href="#"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+                    <a class="btn btn-danger col-md-3 fla" href="#"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
+                    <a class="btn btn-primary col-md-3" href="/planoMonitoria/index/<%= professor %>/<%= monitoria %>"><span class="glyphicon glyphicon-arrow-left"></span> Voltar</a>
+                </div>    
+                <br>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+    </footer>
+</body>
+
+</html>

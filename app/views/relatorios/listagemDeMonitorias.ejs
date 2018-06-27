@@ -1,0 +1,45 @@
+<!-- views/relatorios/listagemDeMonitorias.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <% include partials/head %>
+</head>
+<body>
+  <header>
+    <% include partials/navebar %>
+  </header>
+
+   <main>
+     <div class="container relatorio">
+
+      <div class="jumbotron listagemMonitorias">
+        <p>Monitorias</p>
+        <table>
+          <thead>
+            <tr>
+              <th>DISCIPLINA</th>
+              <th>CÓDIGO</th>
+              <th>ORIENTADOR</th>
+              <th>MONITOR</th>
+              <th>OFERTA</th>
+            </tr>
+           <% monitorias.forEach(function(monitoria) { %> 
+            <tr>
+              <th><%= monitoria.nomeDisciplina %></th>
+              <th><%= monitoria.codigoDisciplina %></th>
+              <th><%= monitoria.professorNome %></th>  
+              <th><%= monitoria.monitorNome %></th>  
+              <th><%= monitoria.oferta %></th>  
+            </tr>
+            <% }) %>
+          </thead>
+        </table>  
+      </div>
+
+     </div>
+   </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

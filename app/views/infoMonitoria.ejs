@@ -1,0 +1,111 @@
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include partials/head %>
+</head>
+<body>
+  <header>
+    <% include partials/navebar %>
+  </header>
+
+   <main>
+     <div class="container listagem">
+
+      <div class="jumbotron planoDeTrabalho">
+        <p>Plano de Trabalho</p>
+        <br>
+        <% if (flag == false) { %>
+          <a class="btn btn-primary btn-block" href="/planoMonitoria/cadastrarAtividade/<%= professor %>/<%= monitoria._id %>">Iniciar Plano de Trabalho</a>
+        <% } else {%>  
+        <table>
+          <thead>
+            <tr>
+              <th>TITULO</th>
+              <th>DESCRIÇÃO</th>
+              <th>HORAS TOTAIS</th>
+              <th>HORAS CUMPRIDAS</th>
+              <th>PORCENTAGEM</th>
+              <th>EDITAR</th>
+              <th>EXCLUIR</th>
+            </tr>
+           <% atividades.forEach(function(atividade) { %> 
+            <tr>
+              <th><%= atividade.titulo %></th>
+              <th><%= atividade.observacoes %></th>  
+              <th><%= atividade.horasTotais %></th>  
+              <th><%= atividade.horasContabilizadas %></th>  
+              <th>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= atividade.porcentagem %>%" aria-valuenow="<%= atividade.porcentagem %>" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>  
+              </th>  
+              <th><a class="btn btn-raised btn-warning btn-block" href="/planoMonitoria/editarAtividade/<%= professor %>/<%= monitoria._id %>/<%= atividade._id %>">Editar</a></th>
+              <th><a class="btn btn-raised btn-danger btn-block" onclick="return confirm('Tem certeza que deseja excluir a atividade? Esta ação não poderá ser desfeita!');" href="/planoMonitoria/excluirAtividade/<%= professor %>/<%= monitoria._id %>/<%= atividade._id %>">Excluir</a></th>
+            </tr>
+            <% }) %>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <br>
+        <p>
+            <a class="btn btn-primary btn-block" href="/planoMonitoria/cadastrarAtividade/<%= professor %>/<%= monitoria._id %>">Cadastrar nova atividade</a>
+        </p>  
+        <% } %>  
+      </div>
+
+
+      <div class="jumbotron atividadesRegistradas">
+        <p>Atividades Registradas</p>
+        <br>
+        <% if (possuiAtReg == false) { %>
+          Nenhuma atividade registrada ainda!
+        <% } else {%>  
+        <table>
+          <thead>
+            <tr>
+              <th>TITULO</th>
+              <th>OBSERVAÇÕES</th>
+              <th>DATA</th>
+              <th>HORA INICIAL</th>
+              <th>HORA TÉRMINO</th>
+              <th>HORAS TOTAIS</th>
+              <th>EXCLUIR</th>
+            </tr>
+           <% atividadesR.forEach(function(atividadeR) { %> 
+            <tr>
+              <th><%= atividadeR.titulo %></th>
+              <th><%= atividadeR.observacoes %></th>  
+              <th><%= atividadeR.data.dia %></th>  
+              <th><%= atividadeR.horaInicio %></th>  
+              <th><%= atividadeR.horaTermino %></th>
+              <th><%= atividadeR.horasRegistradas %></th>
+              <th><a class="btn btn-raised btn-danger btn-block" onclick="return confirm('Tem certeza que deseja excluir a atividade? Esta ação não poderá ser desfeita!');" href="/planoMonitoria/excluirAtividadeRegistradaP/<%= professor %>/<%= monitoria._id %>/<%= atividadeR._id %>">Excluir</a></th>
+            </tr> 
+            <% }) %>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <% } %>  
+      </div>
+
+      <div class="jumbotron horarioMonitoria">
+          <p>Horário de Atendimento</p>
+          <br>
+          <% if (possuiHorarioM == false) { %>
+            <a class="btn btn-primary btn-block" href="/monitorias/criarHorarioDeAtendimento/<%= professor %>/<%= monitoria._id %>">Registrar Horário de Atendimento</a>
+          <% } else { %>
+            <a class="btn btn-primary btn-block" href="/monitorias/HorarioDeAtendimento/<%= professor %>/<%= monitoria._id %>/<%= monitoria.horarioAtendimento %>">Ver Horário de Atendimento</a>
+          <% } %>    
+      </div>
+
+
+     </div>
+   </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

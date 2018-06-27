@@ -1,0 +1,56 @@
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <% include partials/head %>
+</head>
+<body>
+  <header>
+    <% include partials/navebar %>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <% if (perfil == 'Professor') { %> 
+      <div class="jumbotron">
+       <p>Monitorias Sob Orientação</p>
+       <% if (monitorias.length > 0) { %>
+       <table>
+         <thead>
+           <tr>
+             <th>CÓDIGO</th>
+             <th>DISCIPLINA</th>
+             <th>MONITOR</th>
+             <th>E-MAIL</th>
+             <th>VER</th>
+           </tr>
+           <% monitorias.forEach(function(monitoria) { %>
+            <tr>
+              <th><%= monitoria.codigoDisciplina %></th>
+              <th><%= monitoria.nomeDisciplina %></th>
+              <th><%= monitoria.monitorNome %></th>
+              <th><%= monitoria.oferta %></th>
+              <th><a class="btn btn-info btn-block" href="/monitoriaOrientada/<%= monitoria._id %>"><span class="glyphicon glyphicon-plus"></span></a></th>
+            </tr>
+          <% }) %>
+         </thead>
+       </table>
+       <% } else {%>
+        Sem monitorias no momento!
+       <% } %> 
+     </div>
+     <% }  else { %>
+        <div class="jumbotron">
+            <h1>Usuário não autorizado!</h1>
+        </div>
+    <% } %>
+      
+
+    </div>
+  </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

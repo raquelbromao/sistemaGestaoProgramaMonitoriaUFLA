@@ -1,0 +1,42 @@
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <% include partials/head %>
+</head>
+<body>
+  <header>
+    <% include partials/navebar %>
+  </header>
+
+  <main>
+    <div class="container">
+
+    <div class="jumbotron">
+        <% if (perfil == 'Professor') { %> 
+        <p>Editar Atividade</p>
+        <h4>Tipo: <%= atividade.titulo%></h4><br>
+    
+        <form action="/monitoriaOrientada/<%= monitoria %>/planoDeTrabalho/editarAtividade/<%= atividade._id %>" method="post" class="form-horizontal">
+            <div class="form-group">
+                <label>Descrição da Atividade:</label>
+                <textarea class="form-control" name="observacoes" rows="3"><%= atividade.observacoes %></textarea>
+            </div>
+            <div class="form-group">
+                <label>Horas Totais da Atividade:</label>
+                <input type="number" class="form-control" placeholder="<%= atividade.horasTotais %>"  name="horasTotais">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Editar Atividade</button>
+        </form>
+        <% } else { %>    
+            <h1>Usuário não autorizado!</h1>
+        <% } %>
+    </div>
+
+    </div>
+  </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UFLA Monitoria API</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <% include partials/navebar %>
+  </header>
+
+   <main>
+     <div class="container">
+
+       <div class="jumbotron pesquisa">
+        <p>Pesquisar Monitoria</p>
+        <form action="/pesquisarMonitorias/resultados" method="get" class="form-inline">
+            <label class="sr-only" for="nomeMonitoria">Nome da Monitoria</label>
+            <input type="text" class="form-control" id="nomeMonitoria" name="nomeMonitoria" placeholder="Cálculo I...">
+            <button type="submit" class="btn btn-primary">Pesquisar</button>
+        </form>
+       </div> 
+
+     </div>
+   </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

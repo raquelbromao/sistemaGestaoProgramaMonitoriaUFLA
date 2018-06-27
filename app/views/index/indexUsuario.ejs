@@ -1,0 +1,100 @@
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UFLA Monitoria API</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <% include partials/navebar %>
+  </header>
+
+   <main>
+     <div class="container listagem">
+
+       <div class="jumbotron">
+        <p>Bem-vinda(o), <%= dados.nome %></p>
+        <table>
+          <thead>
+            <tr>
+              <th>Perfil</th>
+              <th>Nome  </th>
+              <th>E-mail</th>
+            </tr>
+            <tr>
+              <th><%= perfil %>     </th>  
+              <th><%= dados.nome %> </th>
+              <th><%= dados.login %></th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <br>
+        <p>Menu</p>
+        <div class="list-group menu">
+
+        <% if (perfil == 'Aluno') { %> 
+
+          <div class="list-group aluno">
+            <a href="#" class="list-group-item list-group-item-action active">Index</a>
+            <a href="/pesquisarMonitorias" class="list-group-item list-group-item-action">Pesquisar Monitorias</a>
+            <a href="/monitoriasCadastradas" class="list-group-item list-group-item-action">Listar Monitorias Cadastradas</a>
+          </div>
+
+        <% } else if (perfil == 'Professor') { %>  
+
+          <div class="list-group professor">
+            <a href="#" class="list-group-item list-group-item-action active">Index</a>
+            <a href="/pesquisarMonitorias" class="list-group-item list-group-item-action">Pesquisar Monitorias</a>
+            <a href="/monitoriasOrientadas" class="list-group-item list-group-item-action">Monitorias Sob Orientação</a>
+          </div>
+
+        <% } else if (perfil == 'Monitor') { %>
+
+          <div class="list-group monitor">
+            <a href="#" class="list-group-item list-group-item-action active">Index</a>
+            <a href="/pesquisarMonitorias" class="list-group-item list-group-item-action">Pesquisar Monitorias</a>
+            <a href="/monitoriaVigente" class="list-group-item list-group-item-action">Monitoria Vigente</a>
+          </div>
+
+        <% } else if (perfil == 'PRG') { %>  
+
+          <div class="list-group prg">
+            <a href="#" class="list-group-item list-group-item-action active">Index</a>
+            <a href="/pesquisarMonitorias" class="list-group-item list-group-item-action">Pesquisar Monitorias</a>
+            <a href="/prg/relatorios" class="list-group-item list-group-item-action">Relatórios</a>
+          </div>
+
+        <% } %>  
+
+        </div>
+      </div>
+
+     </div>
+   </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

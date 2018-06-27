@@ -1,0 +1,108 @@
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <% include partials/head %>
+</head>
+<body>
+  <header>
+    <% include partials/navebar %>
+  </header>
+
+   <main>
+     <div class="container">
+
+        <% if (perfil == 'PRG') { %>
+       <div class="jumbotron informacoesBasicas">
+        <p>Monitoria - <%= monitoria.nomeDisciplina %></p>
+        <table>
+          <thead>
+            <tr>
+                <th>DEPARTAMENTO</th>
+                <th>OFERTA</th>
+                <th>MONITOR</th>
+                <th>ORIENTADOR</th>
+            </tr>
+            <tr>
+                <th><%= monitoria.departamento %></th>
+                <th><%= monitoria.oferta %></th>
+                <th><%= monitoria.monitorNome %></th>
+                <th><%= monitoria.professorNome %></th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+       </div>
+
+        <div class="jumbotron relatorioMensal">
+             <p>Relatório Mensal</p>
+                  <% if (possuiPlano == true) { %>
+                      <% if (possuiAtividadesRegistradas == true) { %> 
+                          <form class="form-inline" action="/monitoriaOrientada/<%= monitoria._id %>/gerarRelatorios/1" method="POST">
+                              <div class="form-group">
+                                  <label>Mês:</label>
+                                  <select class="form-control" name="mes">
+                                      <option value="0">Janeiro</option>
+                                      <option value="1">Fevereiro</option>
+                                      <option value="2">Março</option>
+                                      <option value="3">Abril</option>
+                                      <option value="4">Maio</option>
+                                      <option value="5">Junho</option>
+                                      <option value="6">Julho</option>
+                                      <option value="7">Agosto</option>
+                                      <option value="8">Setembro</option>
+                                      <option value="9">Outubro</option>
+                                      <option value="10">Novembro</option>
+                                      <option value="11">Dezembro</option>
+                                  </select>
+                              </div>
+                              <div class="form-group">
+                                    <label>Período:</label>
+                                    <select class="form-control" name="periodo">
+                                        <option value="2018-01">2018-01</option>
+                                    </select>
+                                </div>
+                              <button type="submit" class="btn btn-default btn-primary">Gerar Relatório Mensal</button>
+                          </form>
+                      <% } else { %>
+                          Sem atividades registradas! <br>
+                      <% } %>
+                  <% } else { %>
+                      Sem plano de trabalho cadastrado! <br>
+                  <% } %>    
+        </div>
+
+        <div class="jumbotron relatorioGeral">
+                <p>Relatório Geral</p>
+                    <% if (possuiPlano == true) { %>
+                        <% if (possuiAtividadesRegistradas == true) { %> 
+                            <form class="form-inline" action="/monitoriaOrientada/<%= monitoria._id %>/gerarRelatorios/2" method="POST">
+                                <div class="form-group">
+                                    <label>Período:</label>
+                                    <select class="form-control" name="periodo">
+                                        <option value="2018-01">2018-01</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-default btn-primary">Gerar Relatório Geral</button>
+                            </form>
+                        <% } else { %>
+                            Sem atividades registradas! <br>
+                        <% } %>
+                    <% } else { %>
+                        Sem plano de trabalho cadastrado! <br>
+                    <% } %>    
+        </div>
+
+     </div>
+     <% }  else { %>
+        <div class="jumbotron">
+                <h1>Usuário não autorizado!</h1>
+        </div>
+    <% } %>
+   </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

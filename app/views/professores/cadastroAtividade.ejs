@@ -1,0 +1,50 @@
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <% include partials/head %>
+</head>
+<body>
+  <header>
+    <% include partials/navebar %>
+  </header>
+
+  <main>
+    <div class="container">
+
+    <div class="jumbotron">
+        <% if (perfil == 'Professor') { %> 
+        <p>Cadastrar Atividade</p><br>
+        <form action="/monitoriaOrientada/<%= monitoria %>/planoDeTrabalho/cadastrarAtividade" method="post" class="form-horizontal">
+            <div class="form-group">
+            <label>Tipo de Atividade:</label>
+                <select multiple class="form-control custom-select" name="tipo" required>
+                    <option value="ATV01">Atendimento aos alunos</option>
+                    <option value="ATV02">Elaboração de material didático</option>
+                    <option value="ATV03">Correção de avaliações</option>
+                    <option value="ATV04">Monitoria em aula</option>
+                    <option value="ATV05">Outros</option>
+                </select>
+            </div>
+            <div class="form-group">
+            <label>Descrição da Atividade:</label>
+            <textarea class="form-control" name="observacoes" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+            <label>Horas Totais da Atividade:</label>
+            <input type="number"  class="form-control" name="horasTotais">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Cadastrar Atividade</button>
+        </form>
+        <% } else { %>    
+            <h1>Usuário não autorizado!</h1>
+        <% } %>
+    </div>
+
+    </div>
+  </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

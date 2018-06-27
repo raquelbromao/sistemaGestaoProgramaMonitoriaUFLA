@@ -1,0 +1,45 @@
+<!-- views/relatorios/listagemDeOrientadores.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <% include partials/head %>
+</head>
+<body>
+  <header>
+    <% include partials/navebar %>
+  </header>
+
+   <main>
+     <div class="container relatorio">
+
+      <div class="jumbotron listagemOrientadores">
+        <p>Orientadores</p>
+        <table>
+          <thead>
+            <tr>
+              <th>NOME</th>
+              <th>CÓDIGO</th>
+              <th>TELEFONE</th>
+              <th>E-MAIL</th>
+            </tr>
+           <% professores.forEach(function(professor) { %> 
+            <tr>
+              <th><%= professor.nome %></th>
+              <th><%= professor.codigo %></th>
+              <th><%= professor.telefone %></th>  
+              <th><%= professor.login %></th>  
+            </tr>
+            <% }) %>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>  
+      </div>
+
+     </div>
+   </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

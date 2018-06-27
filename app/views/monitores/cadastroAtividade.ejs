@@ -1,0 +1,61 @@
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <% include partials/head %>
+</head>
+<body>
+  <header>
+    <% include partials/navebar %>
+  </header>
+
+   <main>
+    <div class="container">
+
+     <div class="jumbotron">
+    <% if (perfil == 'Monitor') { %>  
+       <p>Registrar Atividade</p><br>
+       <% if (flag == false) { %>
+        <br>Não há Plano de Trabalho cadastrado ainda!
+        <br>Não é possível registrar atividades!
+       <% } else { %> 
+       <form action="/monitoriaVigente/atividades/registrarAtividade" method="post" class="form-horizontal">
+        <div class="form-group">
+          <label>Tipo de Atividade:</label>
+            <select multiple class="form-control custom-select" name="atividadeEscolhida" required>
+                <% atividades.forEach(function(atividade) { %>
+                <option value="<%= atividade._id %>"> <%= atividade.titulo %> </option>
+                <% }) %>    
+            </select>
+        </div>
+        <div class="form-group">
+          <label>Alunos atendidos:</label>
+          <input type="number"  class="form-control" name="contagemAtendimento">
+        </div>
+        <div class="form-group">
+          <label>Observações:</label>
+          <textarea class="form-control" name="observacoes" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Hora de Início:</label>
+          <input type="time"  class="form-control" name="horaInicio" required>
+        </div>
+        <div class="form-group">
+          <label>Hora do Término:</label>
+          <input type="time"  class="form-control" name="horaTermino" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Cadastrar Atividade</button>
+      </form>
+      <% } %>    
+     </div>
+     <% }  else { %>
+        <h1>Usuário não autorizado!</h1>
+    <% } %>
+
+    </div>
+   </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

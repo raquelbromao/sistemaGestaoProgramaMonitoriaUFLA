@@ -1,0 +1,56 @@
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UFLA Monitoria API</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+  </style>
+</head>
+<body>
+  <header>
+     <% include partials/navebar %>
+  </header>
+
+   <main>
+     <div class="container">
+
+       <div class="jumbotron listaSecoesADM">
+        <p>Links</p>
+        <div class="list-group">
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action active">Index</a>
+            <a href="/adm/alunos" class="list-group-item list-group-item-action">Alunos</a>
+            <a href="/adm/professores" class="list-group-item list-group-item-action">Professores</a>
+            <a href="/adm/prg" class="list-group-item list-group-item-action">Membros da PRG</a>
+            <a href="/adm/monitores" class="list-group-item list-group-item-action">Monitores</a>
+            <a href="/adm/monitorias" class="list-group-item list-group-item-action">Monitorias</a>
+            <a href="/login" class="list-group-item list-group-item-action">Login</a>
+          </div>
+        </div>
+      </div>
+
+     </div>
+   </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

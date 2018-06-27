@@ -1,0 +1,82 @@
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <% include partials/head %>
+</head>
+<body>
+  <header>
+    <% include partials/navebar %>
+  </header>
+
+   <main>
+     <div class="container">
+       <div class="jumbotron informacoesBasicas">
+        <p>Monitoria - <%= monitoria.nomeDisciplina %></p>
+        <table>
+          <thead>
+            <tr>
+                <th>MONITOR</th>
+                <th>ORIENTADOR</th>
+            </tr>
+            <tr>
+                <th><%= monitoria.monitorNome %></th>
+                <th><%= monitoria.professorNome %></th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+       </div>
+
+        <div class="jumbotron horarioAtendimento">
+            <p>Horário de Atendimento</p>
+            <% if (flagPossuiHorarioAtendimento) { %>
+            <table>
+              <thead>
+                <tr>
+                    <th>SEGUNDA-FEIRA</th>
+                    <th>TERÇA-FEIRA  </th>
+                    <th>QUARTA-FEIRA </th>
+                    <th>QUINTA-FEIRA </th>
+                    <th>SEXTA-FEIRA  </th>
+                </tr>
+                <tr>
+                    <th><%= horario.segunda %> </th>
+                    <th><%= horario.terca %> </th>
+                    <th><%= horario.quarta %></th>
+                    <th><%= horario.quinta %></th>
+                    <th><%= horario.sexta %> </th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+            <% } else { %>
+              Sem horário de atendimento!
+            <% } %> 
+        </div>
+       
+       <div class="jumbotron localAtendimento">
+            <p>Local de Atendimento</p>
+            <table>
+              <thead>
+                <tr>
+                  <iframe width="600" height="200" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyABavoCKgp1-bPzJI_mWdrP2ka2mDtfTqE&q=<%= monitoria.googlemaps %>" allowfullscreen>
+                  </iframe>
+                </tr>
+                <tr>
+                    <th><%= monitoria.local %></th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+        </div>
+     </div>
+   </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

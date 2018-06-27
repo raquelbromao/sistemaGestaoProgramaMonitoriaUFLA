@@ -1,0 +1,47 @@
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <% include partials/head %>
+</head>
+<body>
+  <header>
+    <% include partials/navebar %>
+  </header>
+
+   <main>
+    <div class="container">
+
+    <div class="jumbotron">
+    <% if (perfil == 'PRG') { %>  
+        <p>Relatórios de Monitorias</p><br>
+        <form action="/prg/relatorios/1/pesquisar" method="post" class="form-inline">
+            <div class="form-group">
+                <label>Oferta:</label>
+                <select class="form-control" name="oferta">
+                <option value="0000-00">-------</option>
+                <option value="2018-01">2018-01</option>
+                </select>
+            </div>
+            <div class="form-group">
+                    <label>Departamento:</label>
+                    <select class="form-control" name="departamento">
+                    <option value="XXX">-------</option>
+                    <option value="DCC">DCC</option>
+                    <option value="DEX">DEX</option>
+                    </select>
+                </div>
+            <button type="submit" class="btn btn-default btn-primary">Buscar Monitorias</button>
+        </form>  
+    </div>
+    <% }  else { %>
+        <h1>Usuário não autorizado!</h1>
+    <% } %>
+
+    </div>
+   </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UFLA Monitoria API</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+
+  body {
+    background-color: #fff;
+  }
+
+  .jumbotron {
+    background-color: #fff;
+    max-width: 480px;
+  }
+
+  .div-login {
+    position: absolute;
+    left: calc(50vw - 275px);
+    padding: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    height: 200px;
+    margin-left: auto;
+  }
+
+  .form-login {
+    max-width: 400px;
+    padding: 35px 25px 35px;
+    background-color: #ddd;
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .tipo-usuario {
+    margin-left: 20px;
+  }
+  </style>
+</head>
+<body>
+
+   <main>
+     <div class="container">
+       <div class="jumbotron login">
+         <form action="/login" method="post" class="form-horizontal form-login">
+           <input type="email" placeholder="E-mail institucional" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control form-control-sm" name="login">
+           <input type="password" placeholder="Senha" class="form-control form-control-sm" name="senha">
+           <br>
+             <input type="radio" name="tipo" class="tipo-usuario" value="professor"> Professor
+             <input type="radio" name="tipo" class="tipo-usuario" value="aluno"> Aluno
+             <input type="radio" name="tipo" class="tipo-usuario" value="monitor"> Monitor
+             <input type="radio" name="tipo" class="tipo-usuario" value="prg" > PRG
+          <br><br> <button class="btn btn-lg btn-primary btn-block btn-login" type="submit">Entrar</button>
+         </form>
+       </div>
+     </div>
+   </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

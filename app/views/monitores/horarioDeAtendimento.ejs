@@ -1,0 +1,54 @@
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <% include partials/head %>
+</head>
+<body>
+  <header>
+    <% include partials/navebar %>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <div class="jumbotron">
+      <% if (perfil == 'Monitor') { %> 
+       <p>Horário de Atendimento</p>
+        <% if (possuiHorario) { %>
+            <table>
+              <thead>
+                <tr>
+                    <th>SEGUNDA-FEIRA</th>
+                    <th>TERÇA-FEIRA  </th>
+                    <th>QUARTA-FEIRA </th>
+                    <th>QUINTA-FEIRA </th>
+                    <th>SEXTA-FEIRA  </th>
+                </tr>
+                <tr>
+                    <th><%= horario.segunda %> </th>
+                    <th><%= horario.terca %> </th>
+                    <th><%= horario.quarta %></th>
+                    <th><%= horario.quinta %></th>
+                    <th><%= horario.sexta %> </th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+        <% } else { %>
+            Não possui horário de atendimento!
+        <% } %>
+       <% }  else { %>
+        <h1>Usuário não autorizado!</h1>
+       <% } %>
+     </div>
+      
+
+    </div>
+  </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

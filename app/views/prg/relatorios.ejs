@@ -1,0 +1,37 @@
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <% include partials/head %>
+</head>
+<body>
+  <header>
+    <% include partials/navebar %>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <div class="jumbotron dadosBasicos">
+      <% if (perfil == 'PRG') { %> 
+       <p>Relatórios</p>
+       <div class="list-group menu">
+         <div class="list-group monitor">
+           <a href="/prg/relatorios/1" class="list-group-item list-group-item-action">Monitorias</a>
+           <a href="/prg/relatorios/2" class="list-group-item list-group-item-action">Orientadores</a>
+           <a href="/prg/relatorios/3" class="list-group-item list-group-item-action">Monitores</a>
+         </div>
+       </div>
+       <% }  else { %>
+        <h1>Usuário não autorizado!</h1>
+       <% } %>
+     </div>
+      
+
+    </div>
+  </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

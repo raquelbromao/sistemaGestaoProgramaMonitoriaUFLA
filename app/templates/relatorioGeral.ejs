@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UFLA Monitoria API</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+  </style>
+</head>
+<body>
+  <header>
+  </header>
+
+   <main>
+     <div class="container">
+
+        <div class="jumbotron Geral">
+            <h2>Relatório Geral de <%= monitoria.nomeDisciplina %> [<%= periodo %>]</h2>
+            <h3>Código: <%= monitoria.codigoDisciplina %></h3>
+            <h3>Monitor: <%= monitoria.monitorNome %></h3>
+            <h3>Orientador: <%= monitoria.professorNome%></h3>
+        </div>   
+
+        <div class="jumbotron planoDeTrabalho">
+            <h3>Plano de Trabalho</h3>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                    <th>TIPO</th>
+                    <th>DESCRIÇÃO</th>
+                    <th>HORAS TOTAIS</th>
+                    <th>HORAS CUMPRIDAS</th>
+                    <th>PROGRESSÃO</th>
+                    </tr>
+                    <% atividades.forEach(function(atividade) { %> 
+                    <tr>
+                    <th><%= atividade.titulo %></th>
+                    <th><%= atividade.observacoes %></th>  
+                    <th><%= atividade.horasTotais %></th>  
+                    <th><%= atividade.horasContabilizadas %></th>  
+                    <th><%= atividade.porcentagem %></th>  
+                    </tr>
+                    <% }) %>
+                </thead>
+                <tbody>
+                </tbody>
+            </table> 
+        </div>
+
+     </div>
+   </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <% include partials/head %>
+</head>
+<body>
+  <header>
+    <% include partials/navebar %>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <div class="jumbotron">
+      <% if (perfil == 'Professor') { %> 
+       <p>Plano de Trabalho</p>
+        <% if (possuiPlano) { %>
+            <table>
+                    <thead>
+                      <tr>
+                        <th>TITULO</th>
+                        <th>DESCRIÇÃO</th>
+                        <th>HORAS TOTAIS</th>
+                        <th>HORAS CUMPRIDAS</th>
+                        <th>PORCENTAGEM</th>
+                        <th>EDITAR</th>
+                        <th>EXCLUIR</th>
+                      </tr>
+                     <% atividades.forEach(function(atividade) { %> 
+                      <tr>
+                        <th><%= atividade.titulo %></th>
+                        <th><%= atividade.observacoes %></th>  
+                        <th><%= atividade.horasTotais %></th>  
+                        <th><%= atividade.horasContabilizadas %></th>  
+                        <th>
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-info" role="progressbar" style="width: <%= atividade.porcentagem %>%" aria-valuenow="<%= atividade.porcentagem %>" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>  
+                        </th>
+                        <th><a class="btn btn-warning btn-block" href="/monitoriaOrientada/<%= monitoria._id %>/planoDeTrabalho/editarAtividade/<%= atividade._id %>"><span class="glyphicon glyphicon-pencil"></span></a></th>
+                        <th><a class="btn btn-danger btn-block" href="/monitoriaOrientada/<%= monitoria._id %>/planoDeTrabalho/excluirAtividade/<%= atividade._id %>"><span class="glyphicon glyphicon-remove"></span></a></th>  
+                      </tr>
+                      <% }) %>
+                    </thead>
+                    <tbody>
+                    </tbody>
+            </table>
+            <br><a class="btn btn-primary btn-block" href="/monitoriaOrientada/<%= monitoria._id %>/planoDeTrabalho/cadastrarAtividade">Criar Atividade</a>
+        <% } else { %>
+            Não existe Plano de Trabalho cadastrado ainda!
+            <br><a class="btn btn-primary btn-block" href="/monitoriaOrientada/<%= monitoria._id %>/planoDeTrabalho/cadastrarAtividade">Iniciar Plano de Trabalho</a>
+        <% } %>
+       <% }  else { %>
+        <h1>Usuário não autorizado!</h1>
+       <% } %>
+     </div>
+      
+
+    </div>
+  </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

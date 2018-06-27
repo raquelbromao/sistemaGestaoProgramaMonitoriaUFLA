@@ -1,0 +1,54 @@
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <% include partials/head %>
+</head>
+<body>
+  <header>
+    <% include partials/navebar %>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <% if (perfil == 'Professor') { %> 
+      <div class="jumbotron">
+       <p>Monitoria de <%= monitoria.nomeDisciplina %></p>
+       <table>
+         <thead>
+           <tr>
+             <th>Monitor</th>
+             <th>E-mail</th>
+           </tr>
+           <tr>
+             <th><%= monitor.nome %></th>
+             <th><%= monitor.login %></th>
+           </tr>
+         </thead>
+       </table>
+       <br>
+       <p>Menu</p>
+       <div class="list-group menu">
+         <div class="list-group professor">
+           <a href="/monitoriaOrientada/<%= monitoria._id %>/planoDeTrabalho" class="list-group-item list-group-item-action">Plano de Trabalho</a>
+           <a href="/monitoriaOrientada/<%= monitoria._id %>/atividades" class="list-group-item list-group-item-action">Atividades</a>
+           <a href="/monitoriaOrientada/<%= monitoria._id %>/horarioAtendimento" class="list-group-item list-group-item-action">Horário de Atendimento</a>
+           <a href="/monitoriaOrientada/<%= monitoria._id %>/gerarRelatorios" class="list-group-item list-group-item-action">Gerar Relatório</a>
+         </div>
+       </div>
+     </div>
+     <% }  else { %>
+        <div class="jumbotron">
+            <h1>Usuário não autorizado!</h1>
+        </div>
+    <% } %>
+      
+
+    </div>
+  </main>
+
+  <footer>
+  </footer>
+</body>
+</html>
