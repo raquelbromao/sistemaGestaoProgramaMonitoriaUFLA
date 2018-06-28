@@ -8,6 +8,9 @@ exports.uriMongoLocal = "mongodb://localhost/MonitoriaUflaDB";
 exports.saltosCriptografia = 10;
 exports.senhaPadrao = "123456";
 
+//  PERÍODO ATUAL
+exports.periodoAtual = '2018-01';
+
 //  CÓDIGOS
 exports.ultimosCodigosProf = {
     DCC: "003dcc",
